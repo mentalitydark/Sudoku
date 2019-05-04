@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sudoku</title>
+    <link rel="stylesheet" href="./css/reset.css">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Sudoku</h1>
+        <div id="buttons">
+            <button class="dificuldade" id="facil">Fácil</button>
+            <button class="dificuldade" id="medio">Médio</button>
+            <button class="dificuldade" id="dificil">Difícil</button>
+            <button class="dificuldade" id="impossivel">Impossível</button>
+        </div>
+        <div class="table">
+            <table>
+                <tr>
+                    <td class="Qua1" id="L1C1">
+                        <output></output>
+                    </td>
+                    <td class="Qua1" id="L1C2">
+                        <output></output>
+                    </td>
+                    <td class="Qua2" id="L1C3">
+                        <output></output>
+                    </td>
+                    <td class="Qua2" id="L1C4">
+                        <output></output>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Qua1" id="L2C1">
+                        <output></output>
+                    </td>
+                    <td class="Qua1" id="L2C2">
+                        <output></output>
+                    </td>
+                    <td class="Qua2" id="L2C3">
+                        <output></output>
+                    </td>
+                    <td class="Qua2" id="L2C4">
+                        <output></output>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Qua3" id="L3C1">
+                        <output></output>
+                    </td>
+                    <td class="Qua3" id="L3C2">
+                        <output></output>
+                    </td>
+                    <td class="Qua4" id="L3C3">
+                        <output></output>
+                    </td>
+                    <td class="Qua4" id="L3C4">
+                        <output></output>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="Qua3" id="L4C1">
+                        <output></output>
+                    </td>
+                    <td class="Qua3" id="L4C2">
+                        <output></output>
+                    </td>
+                    <td class="Qua4" id="L4C3">
+                        <output></output>
+                    </td>
+                    <td class="Qua4" id="L4C4">
+                        <output></output>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <button id="check">Check</button>
+        <output id="jogo"></output>
+    </div>
+    <script src="./js/check.js"></script>
+    <script src="./js/dificuldade.js"></script>
+    <script src="./js/main.js"></script>
+</body>
+</html>

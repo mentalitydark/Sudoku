@@ -1,0 +1,17 @@
+td {
+    border: 1px solid black;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+}
+.Qua1, .Qua4 {
+    background-color: gray;
+}
+html, body {
+    height: 100%;
+}
+
+.container{
+    display: inline-block
+}
