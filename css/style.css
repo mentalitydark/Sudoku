@@ -5,13 +5,28 @@ td {
     text-align: center;
     vertical-align: middle;
 }
+h1 {
+    font-size: 2em;
+}
+table {
+    box-shadow: 5px 4px 7px 1px rgba(0, 0, 0, 0.4)
+}
 .Qua1, .Qua4 {
-    background-color: gray;
+    background-color: rgba(111, 111, 111, 0.5);
 }
 html, body {
     height: 100%;
 }
-
+button {
+    font-size: 1em;
+    width: 90px;
+    height: 25px;
+    border: 1px solid black;
+    border-radius: 10px;
+    margin: 15px 7px;
+    box-shadow: 5px 4px 7px 1px rgba(0, 0, 0, 0.4), inset -1px -2px 6px 0.5px rgba(0, 0, 0, 0.4);
+    background-color: rgb(184, 250, 225)
+}
 .container{
     display: inline-block
 }

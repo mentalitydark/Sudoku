@@ -1,3 +1,4 @@
+/* eslint-disable no-magic-numbers */
 const buttonfacil = document.querySelector('#facil');
 const resetTdAll = document.querySelectorAll('td');
 // const linha = [1, 2, 3, 4];
