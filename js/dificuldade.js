@@ -1,6 +1,9 @@
 /* eslint-disable no-magic-numbers */
 const buttonfacil = document.querySelector('#facil');
 const resetTdAll = document.querySelectorAll('td');
+const buttonmedio = document.querySelector('#medio');
+const buttondificil = document.querySelector('#dificil');
+const buttonimpossivel = document.querySelector('#impossivel');
 // const linha = [1, 2, 3, 4];
 // const coluna = [1, 2, 3, 4];
 const reset = function() {
@@ -12,6 +15,41 @@ const reset = function() {
     }
     /* essa função serve pra resetar todos TD's
      e tirar qualquer class q eu tenha colocado */
+};
+const sudoku = function(dificuldade) {
+    let verificaTrueFalse = true;
+    let local = '';
+    let randomLinha = parseInt(Math.random() * 4 + 1);
+    let randomColuna = parseInt(Math.random() * 4 + 1);
+    let localAlvo = '';
+    /* localAlvo pega o TD pra depois eu conseguir pegar o valor do filho dele e comprar pra ver se é vázio ou tem algo
+    se tiver algo nele, o while vai pega uma nova linha e coluna e comparar dnv, vai fazer isso até achar algo que não tenha nada
+    depois isso eu pego o local e deixo na forma de um ID pra usar no verificaTrueFalse
+    com o local, linha, coluna e numero verificados, se for tudo true e der certo, vai adicionar o numero no TD
+    caso dê errado, o i diminui pra depois aumentar e continuar no mesmo valor, (exemplo: i = 1, i - 1 = 0, i + 1 = 1 dnv)
+    ele fica fazendo isso pra não chegar no numero limite que é a dificuldade (2, 4, 6 e 8)
+    caso tudo dê certo, vai ficar com a tabela com tantos de numeros q foram definidos clicando no botão*/
+    for (let i = 0; i < dificuldade; i++) {
+        const randomNumero = parseInt(Math.random() * 4 + 1);
+        localAlvo = document.querySelector(`#L${randomLinha}C${randomColuna}`);
+        while (localAlvo.firstElementChild.value !== '') {
+            randomLinha = parseInt(Math.random() * 4 + 1);
+            randomColuna = parseInt(Math.random() * 4 + 1);
+            localAlvo = document.querySelector(`#L${randomLinha}C${randomColuna}`);
+        }
+        local = `#L${randomLinha}C${randomColuna}`;
+        verificaTrueFalse = verifica(local, randomLinha, randomColuna, randomNumero);
+        if (verificaTrueFalse) {
+            document.querySelector(local).firstElementChild.value = randomNumero;
+            document.querySelector(local).classList += ' random';
+            /* document.querySelector(local).classList += ' random'
+                isso serve pra adicionar uma class ao elemento, a condição pra mudar o número requer q só tenha a classe QuaALGUMnúmero
+                isso impede que possa mudar o número que foi gerado pelo programa
+            */
+        } else {
+            i--;
+        }
+    }
 };
 const verifica = function(localizacao, linha, coluna, numero) {
     const local = document.querySelector(localizacao);
@@ -31,58 +69,38 @@ const verifica = function(localizacao, linha, coluna, numero) {
             return false;
         }
         contadorClasse++;
+        /* contadorClasse é pra usar nos Qua
+        foi preciso fazer isso já que é o unico que precisa do 0 por o localClasseVerefica ser um vetor q inicia no 0
+        mesmo que o número do contadorClasse fique 4 ou mais, ainda não entra no if por ser uma comparação de um numero
+        com undefined*/
     }
     return true;
     /* loucura começa aqui
         essa função eu uso pra verificar todas linhas, coluna e quadrados
         eu pego a localização, a linha, coluna e numero que vai ir no TD
-        eu repito isso por 4 vezes, já que todos são um total de 4 (linhas, colunas e quadrados)
+        eu repito isso por 4 vezes, já que todos são tem um total de 4 números(linhas, colunas e quadrados)
         primeiro if compara todos numeros da linha, pra ver se não há repitidos,
         o segundo compra a coluna e o terceiro os quadrados
         se tudo der certo e nenhum for repitido, ele retorna um valor verdadeiro
     */
 };
 buttonfacil.addEventListener('click', function() {
-    /*
-        quando clica no botão, a primeiro coisa q ele faz é resetar tudo
-        eu declaro o verificaTrueFalse pra usar mais a frente
-        eu pego a linha e colune usando o Math.random de 1 a 4
-        após isso, como é o modo fácil, ele repeti isso duas vezes (o for no caso)
-        no for ele pega o numero que vai colocar no TD,
-        ele utiliza um while pra confirmar que os locais não são iguais, ele faz até não serem
-        após isso ele usa a função verifica e dar os valores q vão ser usados nela
-        se tudo der certo, vai retornar o valor true
-        e depois vai adicionar o numero e uma class pra impedir que mude o valor rolando a bolinha do mouse
-        caso dê errado, o i continua 0 e repeti o processo dnv
-        os locais são salvos em um vetor para que não se repitam e o[locais.length - 1] serve pra sempre pegar o ultimo
-    */
     reset();
-    let verificaTrueFalse = true;
-    const locais = [];
-    let randomLinha = parseInt(Math.random()* 4 + 1);
-    let randomColuna = parseInt(Math.random()* 4 + 1);
-    for (let i = 0; i < 2; i++) {
-        const randomNumero = parseInt(Math.random()* 4 + 1);
-        while (`#L${randomLinha}C${randomColuna}` === locais[0]) {
-            randomLinha = parseInt(Math.random() * 4 + 1);
-            randomColuna = parseInt(Math.random() * 4 + 1);
-        }
-        locais.push(`#L${randomLinha}C${randomColuna}`);
-        verificaTrueFalse = verifica(locais[locais.length-1], randomLinha, randomColuna, randomNumero);
-        if (verificaTrueFalse) {
-            document.querySelector(locais[locais.length - 1]).firstElementChild.value = randomNumero;
-            document.querySelector(locais[locais.length - 1]).classList += ' random';
-        } else {
-            i = 0;
-        }
-    }
+    sudoku(2);
+    /*
+    a função sudoku requer uma dificuldade pra ela então por isso é preciso informar algo nos () dela
+    a função reset não precisa de nada sendo informado, só "chamar" ela que uso automaticamente
+    */
 });
-
-// console.log(`L${
-//     localizaLinha[randomLinha]
-// }C${
-//     localizaColuna[randomColuna]
-// }`);
-// verificar coluna = L$C(Fixo);
-// verificar linha = L(fixo)C$;
-// verificar quadrado = Qua$;
+buttonmedio.addEventListener('click', function() {
+    reset();
+    sudoku(4);
+});
+buttondificil.addEventListener('click', function() {
+    reset();
+    sudoku(6);
+});
+buttonimpossivel.addEventListener('click', function() {
+    reset();
+    sudoku(8);
+});
