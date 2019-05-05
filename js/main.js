@@ -40,7 +40,7 @@ let contador15 = 1;
         }
 */
 table.addEventListener('wheel', function(event) {
-    if (event.deltaY < 0) {
+    if (event.deltaY < 0 && event.target.classList[1] !== 'random') {
         if (event.target === tdall[0]) {
             /*
                 O event.target é pra pegar o elemento que o mouse está em cima
@@ -185,7 +185,7 @@ table.addEventListener('wheel', function(event) {
         então se já acontecer alguma rolagem
         para cima, ele volta pro 1, o contador, e o elemento continua vázio
     */
-    if (event.deltaY > 0) {
+    if (event.deltaY > 0 && event.target.classList[1] !== 'random') {
         if (event.target === tdall[0]) {
             contador0--;
             event.target.firstElementChild.value = contador0;
