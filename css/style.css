@@ -2,14 +2,14 @@
 h1 {
     font-size: 2em;
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: bold;
 }
 table {
     box-shadow: 5px 4px 7px 1px rgba(0, 0, 0, 0.4)
     }
 html {
     font-family: 'Times New Roman', Times, serif;
-    font-weight: bold
 }
 button {
     font-weight: bold;
@@ -49,6 +49,11 @@ td {
     text-align: center;
     vertical-align: middle;
     background-color: white;
+}
+.random {
+    font-weight: bold;
+    font-size: 1.2em;
+    text-decoration: underline;
 }
     .Qua1,
     .Qua4 {
